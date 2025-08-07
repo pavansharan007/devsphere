@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@plugin "daisyui";  
+
+body {
+  @apply font-poppins;
+}
+
+
+
+body {
+  overflow-x: hidden;
+}
