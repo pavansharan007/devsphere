@@ -5,14 +5,15 @@ import { Button, Input, Logo } from './index'
 import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { login } from '../store/authSlice'
-
+import Loader from './Loader'
 
 function Signup() {
     const navigate = useNavigate();
     const dispatch = useDispatch();
     const { register, handleSubmit } = useForm();
     const [error,setError] = useState('')
-
+    const [loader, setLoader] = useState(false);
+ 
     const userSignup = async(data) => {
         setError('')
         try {
@@ -72,7 +73,7 @@ function Signup() {
                 )}
                 />
                 <p className='text-white m-3'>Already Have An account ? <Link to ='/login' className='hover:underline hover:text-yellow-500' style={{textDecoration:'underline'}}>Login</Link></p>
-                <div className='justify-center flex'><button type="submit" className='text-black bg-white w-full h-10 rounded-sm'>Create Account</button></div>
+                <div className='justify-center flex'><button type="submit" className='text-black bg-white w-full h-10 rounded-sm'  onClick={() => setLoader(true)}> {loader ? <Loader /> : null}Create Account</button></div>
             </div>
         </form>
         </div>

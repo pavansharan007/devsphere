@@ -13,6 +13,8 @@ import Home from './pages/Home.jsx'
 import AddPost from './pages/AddPost.jsx'
 import Signup from './components/Signup.jsx'
 import EditPost from './pages/EditPost.jsx'
+import Loader from './components/Loader.jsx'
+import MyProjects from './components/MyProjects.jsx'
 const router =createBrowserRouter([
   {
     path:'/',
@@ -65,6 +67,12 @@ const router =createBrowserRouter([
       {
         path : '/post/:slug',
         element:<Post />
+      },
+      {
+        path : '/myprojects',
+        element:(
+          <MyProjects />
+        )
       }
     ]
   }

@@ -3,11 +3,12 @@ import { Link,useNavigate,useParams } from 'react-router-dom'
 import {useSelector} from 'react-redux'
 import services from '../appwrite/config'
 import parse from 'html-react-parser'
-
+import Loader from '../components/Loader'
 function Post() {
     const [post,setPost]=useState(null)
     const {slug}=useParams()
     const navigate = useNavigate()
+    const [loading,setLoading] = useState(false)
     const user = useSelector((state) =>state.auth.user)
 
     const isAuthor =post && user ? post.userid === user.$id : false
@@ -53,11 +54,31 @@ function Post() {
                 )}
 
             </div>
-            <div className= 'mb-6 flex flex-row items-center justify-left space-x-4 '>
-                <h1 className='text-white '><span className='text-lg font-bold'>Title :</span> {post.titlle}</h1>
+            <div className= 'mb-2  items-center justify-left space-x-4 '>
+                <h1 className='text-white '><span className='text-lg font-bold'>Project Name :</span> {post.titlle}</h1>
             </div>
-            <span className='text-lg font-bold'>Content :</span>
-            <div className='browser-css '>{parse(post.content)}</div>
+            
+            <div className='text-white mb-2' >
+                <h1 className='font-bold text-white'>Live Demo url :</h1>
+                <a href={post.demourl} className='px-4' target="_blank" rel="noopener noreferrer">
+                        {post.demourl}
+                </a>
+            </div>
+            <div className='text-white mb-2'>
+                <h1 className='font-bold text-white'>Github Url :</h1>
+                <a href={post.demourl}  className='px-4' target="_blank" rel="noopener noreferrer">
+                        {post.githuburl}
+                </a>
+            </div>
+            <div className='text-white mb-2'>
+                <h1 className='text-lg font-bold'>Tech Stacks :</h1>
+                <div className='px-4'>{post.techstacks}</div>
+            </div>
+            <div className='text-white mb-2'>
+                <h1 className='text-lg font-bold'>Project Description :</h1>
+                <div className='px-4'>{post.content}</div>
+            </div>
+
         </div>
     </div>
   ):false;

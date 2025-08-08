@@ -5,13 +5,14 @@ import {Button, Input,Logo} from './index'
 import { useDispatch } from 'react-redux'
 import {useForm} from 'react-hook-form'
 import authService from '../appwrite/auth'
-
+import Loader from './Loader'
 
 function Login() {
     const navigate= useNavigate();
     const dispatch = useDispatch();
     const {register,handleSubmit}=useForm();
     const [error, setError] = useState('');
+    const [loading, setLoading] = useState(false);
     
     const login = async (data) => {
         setError('');
@@ -60,7 +61,7 @@ function Login() {
                 <Link to ='/signup' className='text-white hover:underline hover:text-teal-500' style={{textDecoration:'underline'}}> Sign Up</Link>
             </p>
             
-                    <button className='text-black w-full h-10 bg-white rounded-sm border '> Log In</button>
+                    <button className='text-black w-full h-10 bg-white rounded-sm border flex items-center justify-center' onClick={() => setLoading(true)}>{loading ? <Loader /> : null}{" "} Log In</button>
                 </div>
             </form>
         </div>

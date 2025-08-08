@@ -2,6 +2,7 @@ import React from 'react'
 import {LogoutBtn,Logo} from '../index';
 import {useNavigate} from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { path } from 'framer-motion/client';
 
 
 function Header() {
@@ -13,7 +14,7 @@ function Header() {
     {label: 'Login', path: '/login',active:!authStatus},
     {label:'All Projects', path: '/all-post',active:authStatus},
     {label: 'Create Project', path: '/add-post',active:authStatus},
-    
+    {label : 'My Projects',path:'/myprojects',active:authStatus}
   ]
 
   return (

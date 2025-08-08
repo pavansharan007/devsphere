@@ -5,7 +5,8 @@ import services from '../appwrite/config';
 import authService from '../appwrite/auth';
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-
+import Textarea from './Textarea';
+import Loader from './Loader';
 export default function PostForm({post}) {
     const {register, handleSubmit,watch,setValue,control,getValues} =useForm({
         defaultValues: {
@@ -13,14 +14,16 @@ export default function PostForm({post}) {
             content: post?.content || '',
             slug: post?.slug || '',
             status: post?.status || 'active',
+            demourl : post?.demourl || '',
+            githuburl : post?.githuburl || '',
+            techstacks: post?.techstacks || '',
         }
     })
     const navigate = useNavigate();
     const user = useSelector((state) => state.auth.user);
+    const [loader, setLoader] = React.useState(false);
 
-
-    console.log(user.$id);
-    console.log(post);
+    
     if (!user) {
         return <p className="text-red-500">You must be logged in to create or edit a post.</p>;
     }
@@ -83,35 +86,55 @@ export default function PostForm({post}) {
 
   return (
     <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-        <div className="w-2/3 px-2">
+        <div className="w-2/3 px-8 space-y-4">
             <Input
-                label="Title :"
+                label="Project Name:"
                 placeholder="Title"
-                className="mb-4 text-black"
+                className="mb-4 flex flex-col w-1/2 text-black"
                 {...register("titlle", { required: true })}
             />
             <Input
                 label="Slug :"
                 placeholder="Slug"
-                className="mb-4"
+                className="mb-4 flex flex-col w-1/2 text-black"
                 {...register("slug", { required: true })}
                 onInput={(e) => {
                     setValue("slug", slugTransform(e.currentTarget.value), { shouldValidate: true });
                 }}
             />
-            <TextEditor
-                name='content'
-                control={control}
-                className='text-white'
-                label='Content :'
-                defaultValues={getValues('content')}
-                />
+            <Input
+            label="Live Demo url"
+            placeholder="https://yourproject.vercel.app"
+            type="url"
+            className="mb-4 flex flex-col w-1/2 text-black"
+            {...register("demourl", { required: true})}
+
+            />
+            <Input
+            label="Github repo"
+            type="url"
+            placeholder="https://github.com/you/yourproject"
+            className="mb-4 flex flex-col w-1/2 text-black"
+            {...register("githuburl",{required:true})}
+            />
+            <Input
+            label="Tech Stacks"
+            placeholder="Enter the tech stacks used in your project"
+            className="mb-4 flex flex-col w-1/2 text-black"
+            {...register("techstacks",{required:true})}
+            />
         </div>
-        <div className="w-1/3 px-2">
+        <div className="w-1/3 pr-8">
+            <Textarea
+                label="Project Description :"
+                placeholder="What does your project do?who is it for? How does it work?"
+                className='mb-4'
+                {...register("content", { required: true })}
+            />
             <Input
                 label="Featured Image :"
                 type="file"
-                className="mb-4"
+                className="mb-4 flex flex-col w-1/2 text-black"
                 accept="image/png, image/jpg, image/jpeg, image/gif"
                 {...register("image", { required: !post })}
             />
@@ -126,13 +149,16 @@ export default function PostForm({post}) {
             )}
             <Select
                 options={["active", "inactive"]}
-                label="Status"
-                className="mb-4"
+                label="Status :  "
+                className="mb-4 "
                 {...register("status", { required: true })}
             />
-            <Button type="submit" bgColor={post ? "bg-green-500" : undefined} className="w-full">
-                {post ? "Update" : "Submit"}
-            </Button>
+            <div className={`flex justify-center text-white ${post ? "bg-green-500" : "bg-blue-500"}`}>
+                <button type="submit" className="w-full" onClick={() => setLoader(true)}>
+                    {loader ? <Loader /> :null}
+                    {post ? "Update" : "Submit"}
+                </button>
+            </div>
         </div>
     </form>
   )

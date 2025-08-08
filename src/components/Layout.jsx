@@ -16,7 +16,7 @@ export default function Layout({children,authenticated=true}) {
         setLoading(false);
     },[authStatus,navigate,authenticated])
   return loading ? (
-    <h1>loading</h1>
+    <h1 className='text-white'>loading</h1>
   ) : <>{children}</>
 }
 

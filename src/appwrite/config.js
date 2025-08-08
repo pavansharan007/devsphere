@@ -12,7 +12,7 @@ export class Services{
         this.databases = new Databases(this.client);
         this.bucket = new Storage(this.client);
     }
-    async createPost({titlle,slug,content,featuredImage,status,userid}){
+    async createPost({titlle,slug,content,featuredImage,status,userid,demourl,githuburl,techstacks}){
         try {
             return await this.databases.createDocument(
                 conf.appwriteDatabaseId,
@@ -25,6 +25,9 @@ export class Services{
                     featuredImage,
                     status,
                     userid,
+                    demourl,
+                    githuburl,
+                    techstacks
                 }
             );
         } catch (error) {
@@ -32,7 +35,7 @@ export class Services{
             throw error;
         }
     }
-    async updatePost(slug,{titlle,content,featuredImage,status}){
+    async updatePost(slug,{titlle,content,featuredImage,status,demourl,githuburl,techstacks}){
         try {
             return await this.databases.updateDocument(
                 conf.appwriteDatabaseId,
@@ -42,7 +45,10 @@ export class Services{
                     titlle,
                     content,
                     featuredImage,
-                    status
+                    status,
+                    demourl,
+                    githuburl,
+                    techstacks
                 }
             )
         } catch (error) {
@@ -86,7 +92,21 @@ export class Services{
             return false
         }
     }
-
+    async getMyPosts(userid) {
+            
+        try {
+            return await this.databases.listDocuments(
+                conf.appwriteDatabaseId,
+                conf.appwriteCollectionId,
+                [
+                    Query.equal("userid", userid)
+                ]
+            )
+        } catch (error) {
+            console.log("Error fetching all posts:", error);
+            return false
+        }
+    }
     async uploadFile(file) {
         try {
             return await this.bucket.createFile(
