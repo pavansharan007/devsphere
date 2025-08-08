@@ -85,12 +85,13 @@ export default function PostForm({post}) {
     }, [watch, slugTransform, setValue]);
 
   return (
-    <form onSubmit={handleSubmit(submit)} className="flex flex-wrap">
-        <div className="w-2/3 px-8 space-y-4">
+    <form onSubmit={handleSubmit(submit)} className="flex  justify-center flex-wrap">
+        <div className='grid cols-1  justify-center  md:grid-cols-2  '>
+        <div className="w-full px-8 space-y-4 ">
             <Input
                 label="Project Name:"
                 placeholder="Title"
-                className="mb-4 flex flex-col w-1/2 text-black"
+                className="mb-4 flex flex-col  text-black"
                 {...register("titlle", { required: true })}
             />
             <Input
@@ -124,7 +125,7 @@ export default function PostForm({post}) {
             {...register("techstacks",{required:true})}
             />
         </div>
-        <div className="w-1/3 pr-8">
+        <div className="w-full pl-8">
             <Textarea
                 label="Project Description :"
                 placeholder="What does your project do?who is it for? How does it work?"
@@ -159,6 +160,7 @@ export default function PostForm({post}) {
                     {post ? "Update" : "Submit"}
                 </button>
             </div>
+        </div>
         </div>
     </form>
   )

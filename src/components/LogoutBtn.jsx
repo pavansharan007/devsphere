@@ -16,7 +16,7 @@ function LogoutBtn() {
 
   return (
     <div className='flex items-center justify-center'>
-      <button onClick={handleLogout} className='bg-red-500 text-white px-4 py-2 rounded flex items-center'>{loader? <Loader/> : null}{" "} Logout</button>
+      <button onClick={handleLogout} className=' px-4 py-2  text-3xl rounded flex items-center'>{loader? <Loader/> : null}{" "} Logout</button>
     </div>
   )
 }

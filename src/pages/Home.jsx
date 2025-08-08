@@ -20,8 +20,8 @@ function Home() {
         className="flex flex-col items-center justify-center text-center mb-8"
         style={{ minHeight: "80vh" }}
       >
-        <h1 className="text-white text-7xl">Where Devs Orbit</h1>
-        <h1 className="text-7xl text-white">Their Projects</h1>
+        <h1 className="text-white text-7xl sm:text-5xl lg:text-7xl">Where Devs Orbit</h1>
+        <h1 className="text-4xl text-white sm:text-5xl lg:text-7xl ">Their Projects</h1>
         <div className="py-4 text-gray-400">
           <p>Show case and discover amazing projects</p>
           <p>created by develpoers</p>

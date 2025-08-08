@@ -1,23 +1,31 @@
- /** @type {import('tailwindcss').Config} */
-export default {
-   content: [
+// tailwind.config.js
+const withMT = require("@material-tailwind/react/utils/withMT");
+
+/** @type {import('tailwindcss').Config} */
+module.exports = withMT({
+  content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
-   theme: {
-     extend: {
+  theme: {
+    extend: {
+      screens: {
+        'sm': '380px',
+        'md': '768px',
+        'lg': '1000px',
+      },
       fontFamily: {
         poppins: ['Poppins', 'sans-serif'],
       },
       colors: {
         vercel: {
-          bg: '#000',             // your default
-          color1: '#111',         // component default
-          color2: '#222',         // hover background
-          color3: '#333',         // active/state background
+          bg: '#000',
+          color1: '#111',
+          color2: '#222',
+          color3: '#333',
         },
       },
-     },
-   },
-   plugins: [],
- } 
+    },
+  },
+  plugins: [],
+});

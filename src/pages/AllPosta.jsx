@@ -17,7 +17,7 @@ function AllPosta() {
   }
   return (
     <div>
-        <div className="flex flex-wrap justify-center">
+        <div className="grid cols-1 md:grid-cols-2 lg:grid-cols-3 justify-center">
           {posts.map((post) => (
             <div key={post.$id} className="p-2 w-1/4">
               <PostProject {...post} />
