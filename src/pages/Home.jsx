@@ -20,15 +20,15 @@ function Home() {
         className="flex flex-col items-center justify-center text-center mb-8"
         style={{ minHeight: "80vh" }}
       >
-        <h1 className="text-white text-7xl sm:text-5xl lg:text-7xl">Where Devs Orbit</h1>
-        <h1 className="text-4xl text-white sm:text-5xl lg:text-7xl ">Their Projects</h1>
+        <h1 className="text-white text-3xl sm:text-4xl lg:text-7xl mb-2">Where Devs Orbit</h1>
+        <h1 className="text-3xl text-white sm:text-4xl lg:text-7xl ">Their Projects</h1>
         <div className="py-4 text-gray-400">
           <p>Show case and discover amazing projects</p>
           <p>created by develpoers</p>
         </div>
-        <div className="py-6">
+        <div className="py-6 flex flex-row">
           <button
-            className="bg-cyan-500 text-black font-semibold px-6 py-3 rounded-md hover:bg-cyan-400 transition"
+            className="bg-cyan-500 text-black font-semibold px-6 py-3  rounded-md hover:bg-cyan-400 transition"
             onClick={() => navigate("/signup")}
           >
             Get Started
