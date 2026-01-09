@@ -55,7 +55,8 @@ const Footer = () => {
             </motion.div>
             
             <p className="text-gray-400 text-lg leading-relaxed max-w-xs">
-              Orbiting the world of development. Discover and showcase the next generation of digital tools.
+              Showcase and discover amazing projects <br className="hidden sm:block" />
+            created by developers.
             </p>
 
             <div className="flex items-center gap-3">
