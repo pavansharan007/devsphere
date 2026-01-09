@@ -19,11 +19,11 @@ function Header() {
 
   return (
     <>
-    <div className='flex items-center pl-4'>
+    <div className='flex items-center '>
       <HamNav />
       <div className='w-full  h-16 flex items-center justify-center'>
      
-      <div className='flex items-center  justify-center gap-1 pl-4'>
+      <div className='flex items-center  justify-center '>
         <Logo /> <h1 className='text-white text-2xl '>DevSphere</h1>
       </div>
       
