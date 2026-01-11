@@ -1,6 +1,6 @@
 # 💻 Devsphere
 
-**Devsphere** is a modern and minimal platform for developers to showcase their projects and build their personal tech portfolio.
+**Devsphere** is a modern and minimal platform for developers to showcase their projects 
 
 Built with React and powered by Appwrite, it provides a seamless way to upload, view, and manage developer projects in a clean UI.
 
